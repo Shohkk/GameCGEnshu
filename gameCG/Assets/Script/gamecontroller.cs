@@ -26,6 +26,7 @@ public class gamecontroller : MonoBehaviour
         titleimage.gameObject.SetActive(true); //タイトルイメージを表示する
 
         //停止状態
+        
 
     }
 
