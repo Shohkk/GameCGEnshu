@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
     public Text score;
     public ContactFilter2D filter2d;
+    public bool IsStop;
 
     float direction = 1f;
     float runThreshold = 2.2f;
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (IsStop) return;
+
         Move();
         ChangeState();
         ChangeAnimation();

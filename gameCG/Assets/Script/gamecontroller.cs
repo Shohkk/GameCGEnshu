@@ -26,7 +26,7 @@ public class gamecontroller : MonoBehaviour
         titleimage.gameObject.SetActive(true); //タイトルイメージを表示する
 
         //停止状態
-        
+        player.IsStop = true;
 
     }
 
@@ -54,7 +54,7 @@ public class gamecontroller : MonoBehaviour
 
                     nowmode = GAMEMODE.END; //エンド画面へ移動する
                     //停止状態を
-
+                    player.IsStop = false;
                     endimage.gameObject.SetActive(true); //エンドイメージを表示する
                 }
 
