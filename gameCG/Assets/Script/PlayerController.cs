@@ -192,4 +192,6 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("hit" + count);
         }
     }
+
+   
 }

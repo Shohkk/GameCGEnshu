@@ -42,6 +42,7 @@ public class gamecontroller : MonoBehaviour
                     nowmode = GAMEMODE.PLAY; //本編へ移動する
                     titleimage.gameObject.SetActive(false); //タイトルイメージを消す
                     player.IsStop = false;
+                    player.gameObject.SetActive(true);
 
                     Debug.Log("title");
 
@@ -79,9 +80,17 @@ public class gamecontroller : MonoBehaviour
 
                     Debug.Log("play");
                     //プレイヤーのスクリプトにあるリセットを呼び出す
+                    reset();
                 }
 
                 break;
         }
+    }
+
+    void reset()
+    {
+        player.transform.position = new Vector3(0f, 0f, 0f);
+        player.gameObject.SetActive(false);
+
     }
 }
