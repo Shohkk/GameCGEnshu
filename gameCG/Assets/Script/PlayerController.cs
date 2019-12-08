@@ -43,8 +43,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (IsStop) return;
+        if (IsStop == true) return;
 
+        Debug.Log(IsStop);
         Move();
         ChangeState();
         ChangeAnimation();

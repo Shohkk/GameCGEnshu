@@ -41,7 +41,9 @@ public class gamecontroller : MonoBehaviour
                 { //ジャンプボタン押したら
                     nowmode = GAMEMODE.PLAY; //本編へ移動する
                     titleimage.gameObject.SetActive(false); //タイトルイメージを消す
+                    player.IsStop = false;
 
+                    Debug.Log("title");
 
                 }
                 break;
@@ -54,8 +56,9 @@ public class gamecontroller : MonoBehaviour
 
                     nowmode = GAMEMODE.END; //エンド画面へ移動する
                     //停止状態を
-                    player.IsStop = false;
+                    player.IsStop = true;
                     endimage.gameObject.SetActive(true); //エンドイメージを表示する
+                    Debug.Log("play");
                 }
 
 
@@ -74,6 +77,7 @@ public class gamecontroller : MonoBehaviour
                         esa.GetChild(i).gameObject.SetActive(true); //取得したiのアイテムを表示する
                     }
 
+                    Debug.Log("play");
                     //プレイヤーのスクリプトにあるリセットを呼び出す
                 }
 
