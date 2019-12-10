@@ -19,11 +19,14 @@ public class gamecontroller : MonoBehaviour
     public Transform endimage; //Unityのエンドイメージを取得
     public Transform esa; //Unityのアイテムグループを取得
 
+    PlayerController playerscript;
     // Use this for initialization
     void Start()
     {
         nowmode = GAMEMODE.TITLE; //初期状態のゲームモード(タイトル)
         titleimage.gameObject.SetActive(true); //タイトルイメージを表示する
+
+        playerscript = player.GetComponent<PlayerController>();
 
         //停止状態
         player.IsStop = true;
@@ -91,6 +94,8 @@ public class gamecontroller : MonoBehaviour
     {
         player.transform.position = new Vector3(0f, 0f, 0f);
         player.gameObject.SetActive(false);
+        player.resetscore();
+
 
     }
 }

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Text score;
     public ContactFilter2D filter2d;
     public bool IsStop;
+    public int count = 0;
 
     float direction = 1f;
     float runThreshold = 2.2f;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     float runSpeed = 0.5f;
     float nowdirection = 1f;
     bool isGround = true;
-    int count = 0;
+    
     int jump = 0;
 
 
@@ -191,6 +192,12 @@ public class PlayerController : MonoBehaviour
             score.text = ("×"+count.ToString());
             //Debug.Log("hit" + count);
         }
+    }
+
+    public void resetscore()
+    {
+        count = 0;
+        score.text = ("×" + count.ToString());
     }
 
    
