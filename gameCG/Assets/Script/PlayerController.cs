@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     {
         if (IsStop == true) return;
 
-        Debug.Log(IsStop);
+        
         Move();
         ChangeState();
         ChangeAnimation();
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         //地面判定
         isGround = GetComponent<Rigidbody2D>().IsTouching(filter2d);
-        Debug.Log(state);
+        
     }
 
 
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 scale = transform.localScale;
         //ジャンプ
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (isGround==true)
             {
@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
             count += 1;
             score.text = ("×"+count.ToString());
-            //Debug.Log("hit" + count);
+           
         }
     }
 

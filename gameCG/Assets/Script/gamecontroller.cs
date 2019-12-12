@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gamecontroller : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class gamecontroller : MonoBehaviour
     public Transform GoalLabel; //Unityのゴールラベルを取得
     public Transform endimage; //Unityのエンドイメージを取得
     public Transform esa; //Unityのアイテムグループを取得
+    public Text resultscore;
+    public Transform sousapanel;
+    public Transform paneldelete;
+
+    bool first = true;
 
     PlayerController playerscript;
     // Use this for initialization
@@ -30,7 +36,7 @@ public class gamecontroller : MonoBehaviour
 
         //停止状態
         player.IsStop = true;
-
+       
     }
 
     // Update is called once per frame
@@ -46,7 +52,10 @@ public class gamecontroller : MonoBehaviour
                     titleimage.gameObject.SetActive(false); //タイトルイメージを消す
                     player.IsStop = false;
                     player.gameObject.SetActive(true);
-
+                    if (first == true)
+                    {
+                        sousapanel.gameObject.SetActive(true);
+                    }
                     Debug.Log("title");
 
                 }
@@ -55,6 +64,12 @@ public class gamecontroller : MonoBehaviour
 
             case GAMEMODE.PLAY:  //ゲーム本編中で動くプログラム
 
+                if (player.transform.position.x > paneldelete.position.x)
+                {
+                    sousapanel.gameObject.SetActive(false);
+                    first = false;
+                }
+
                 if (player.transform.position.x > GoalLabel.position.x)
                 { //プレイヤーのX座標がゴールラベルより大きくなったら
 
@@ -62,9 +77,9 @@ public class gamecontroller : MonoBehaviour
                     //停止状態を
                     player.IsStop = true;
                     endimage.gameObject.SetActive(true); //エンドイメージを表示する
+                    resultscore.text = ("スコア："+playerscript.count.ToString());
                     Debug.Log("play");
                 }
-
 
                 break;
 
@@ -88,6 +103,8 @@ public class gamecontroller : MonoBehaviour
 
                 break;
         }
+
+        
     }
 
     void reset()
