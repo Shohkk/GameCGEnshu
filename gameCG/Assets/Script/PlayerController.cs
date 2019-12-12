@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     
     int jump = 0;
 
+    AudioSource audio;
+    public AudioClip[] sounds;
+
 
     string state;
     string prevState;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
         //コンポーネント読み込み
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        audio = GetComponent<AudioSource>();
     }
 
 
@@ -66,7 +71,9 @@ public class PlayerController : MonoBehaviour
         {
             if (isGround==true)
             {
+                audio.PlayOneShot(sounds[0]);
                 this.rb.AddForce(transform.up * flap);
+
             }
         }
 
@@ -187,6 +194,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "item")
         {
+            audio.PlayOneShot(sounds[1]);
             collision.gameObject.SetActive(false);
             count += 1;
             score.text = ("×"+count.ToString());
