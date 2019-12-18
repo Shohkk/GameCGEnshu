@@ -46,7 +46,7 @@ public class gamecontroller : MonoBehaviour
         { //スイッチ形式、○○だったら××せよ
             case GAMEMODE.TITLE: //タイトル画面で動くプログラム
 
-                if (Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
                 { //ジャンプボタン押したら
                     nowmode = GAMEMODE.PLAY; //本編へ移動する
                     titleimage.gameObject.SetActive(false); //タイトルイメージを消す
@@ -85,7 +85,7 @@ public class gamecontroller : MonoBehaviour
 
             case GAMEMODE.END:  //エンド画面で動くプログラム
 
-                if (Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
                 { //ジャンプボタン押したら
                     nowmode = GAMEMODE.TITLE; //本編へ移動する
                     titleimage.gameObject.SetActive(true); //タイトルイメージを表示
